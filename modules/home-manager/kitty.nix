@@ -41,6 +41,8 @@
   };
   programs.git = {
     enable = true;
+    userEmail = "186639318+sudo-karl@users.noreply.github.com";
+    userName = "sudo-karl";
   };
 
 }
