@@ -41,8 +41,6 @@
   };
   programs.git = {
     enable = true;
-    userName = "sudo_karl";
-    userEmail = "hatoppkarl@gmail.com";
   };
 
 }
