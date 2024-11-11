@@ -23,7 +23,7 @@
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.home-manager
-	inputs.nixvim.nixosModules.nixvim
+        inputs.nixvim.nixosModules.nixvim
         inputs.catppuccin.nixosModules.catppuccin
       ];
     };

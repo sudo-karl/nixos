@@ -38,11 +38,35 @@
     baseIndex = 1;
     keyMode = "vi";
     plugins = with pkgs; [ tmuxPlugins.vim-tmux-navigator ];
+    escapeTime = 0;
+    extraConfig = "set -g status-position top";
   };
   programs.git = {
     enable = true;
     userEmail = "186639318+sudo-karl@users.noreply.github.com";
     userName = "sudo-karl";
+  };
+  programs.bat.enable = true;
+  programs.cava = {
+    enable = true;
+    settings = {
+      general.framerate = 60;
+    };
+  };
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    tmux.enableShellIntegration = true;
+  };
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      manager = {
+        show_hidden = true;
+        sort_dir_first = true;
+      };
+    };
   };
 
 }

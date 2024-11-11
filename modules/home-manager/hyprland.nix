@@ -8,7 +8,7 @@
         "$mod, b, exec, firefox"
         "$mod, return, exec, kitty"
         "$mod, space, exec, rofi -show drun"
-        "$mod, e, exec, nautilus"
+        "$mod, e, exec, thunar"
         "$mod, q, killactive"
         "$mod, m, exit"
         "$SUPER_SHIFT, l, exec, hyprlock"
@@ -40,6 +40,11 @@
         "$mod SHIFT, 9, movetoworkspace, 9"
         "$mod SHIFT, 0, movetoworkspace, 10"
       ];
+      monitor = "HDMI-A-1, 1920x1080@144, 0x0, 1";
+      input = {
+        kb_layout = "us,de";
+        kb_options = ["grp:alt_shift_toggle""ctrl:nocaps"];
+      };
       
     };
 
@@ -100,5 +105,6 @@
     platformTheme.name = "kvantum";
   };
   catppuccin.pointerCursor.enable = true;
+    
 
 }

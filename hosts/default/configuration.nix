@@ -51,7 +51,12 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.sddm.package = pkgs.kdePackages.sddm;
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
 
   programs.hyprland = {
     enable = true;
