@@ -8,8 +8,8 @@
     shellIntegration.enableZshIntegration = true;
     settings = {
       enable_audio_bell = false;
-      background_opacity = 0.9;
-      background_blur = 64;
+      background_opacity = 0.5;
+      background_blur = 20;
     };
   };
   programs.zsh = {

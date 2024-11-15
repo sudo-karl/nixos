@@ -12,6 +12,10 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   # Bootloader.
   boot.loader.grub = {
     enable = true;
@@ -110,6 +114,9 @@
     file
     discord-screenaudio
     cmatrix
+    cowsay
+    sl
+    glmark2
   ];
   environment.sessionVariables = {
     EDITOR = "nvim";
@@ -120,7 +127,9 @@
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = "performance";
 
+  services.openssh = {
+    enable = true;
+  };
 
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
