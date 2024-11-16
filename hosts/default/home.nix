@@ -18,6 +18,11 @@
     firefox
     kitty
     neofetch
+    statix
+    black
+    clang
+    texpresso
+    texliveBasic
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')

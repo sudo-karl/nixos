@@ -17,27 +17,29 @@
       cmp = {
         enable = true;
         autoEnableSources = true;
-        settings = { sources = [ { name = "nvim_lsp"; }
-            { name = "path"; }
+        settings = { sources = [ 
+            { name = "nvim_lsp"; }
+            { name = "path";}
             { name = "buffer"; }
-            { name = "luasnip"; }
             { name = "cmdline"; }
+            { name = "luasnip"; }
             { name = "treesitter"; }
           ];
           mapping = {
-            "<CR>" = "cmp.mapping.confirm({ select = false})";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
             "<TAB>" = ''
               cmp.mapping(function(fallback)
                 if cmp.visible() then
                   cmp.select_next_item();
-                elseif luasnip.expand_or_jumpable() then
-                  luasnip.expand_or_jump()
+                elseif require("luasnip").expand_or_locally_jumpable() then
+                  require("luasnip").expand_or_jump()
                 else 
                   fallback()
                 end 
               end, { "i", "s" })
             '';
           };
+          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
         };
       };
       luasnip = {
@@ -82,7 +84,7 @@
         lintersByFt = {
           c = ["clang-format"];
           python = ["black"];
-          nix = ["nixd"];
+          nix = ["statix"];
         };
         autoCmd = {
           callback = {
@@ -119,6 +121,7 @@
         };
       };
       oil.enable = true;
+      texpresso.enable = true;
 			tmux-navigator.enable = true;
       lazygit = {
         enable = true;
@@ -155,7 +158,7 @@
       scrolloff = 8;
       encoding = "utf-8";
       fileencoding = "utf-8";
-      cmdheight = 2;
+      cmdheight = 1;
       number = true;
       relativenumber = true;
     };
@@ -172,5 +175,6 @@
       }
     ];
   };
+   
 }
 
