@@ -1,16 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./../../modules/nixos/default.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./../../modules/nixos/default.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   hardware.graphics = {
     enable = true;
@@ -22,11 +24,12 @@
     efiSupport = true;
     device = "nodev";
     useOSProber = true;
+    gfxmodeEfi = "1920x1080";
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -51,6 +54,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.sddm.package = pkgs.kdePackages.sddm;
@@ -90,13 +94,13 @@
   users.users.karl = {
     isNormalUser = true;
     description = "Karl Hatopp";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
     ];
   };
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = { "karl" = import ./home.nix; };
+    extraSpecialArgs = {inherit inputs;};
+    users = {"karl" = import ./home.nix;};
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -117,13 +121,20 @@
     cowsay
     sl
     glmark2
+    hyprpolkitagent
+    stress
+    clang-tools
+    nixd
+    gcc
+    alejandra
+    wl-clipboard
   ];
   environment.sessionVariables = {
     EDITOR = "nvim";
     SUDO_EDITOR = "nvim";
     NIXOS_OZONE_WL = "1";
-  }; 
-  
+  };
+
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = "performance";
 

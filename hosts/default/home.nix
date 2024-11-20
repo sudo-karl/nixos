@@ -23,13 +23,14 @@
     clang
     texpresso
     texliveBasic
+
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
   fonts.fontconfig = {
     enable = true;
-    defaultFonts.monospace = ["JetBrainsMono"];
+    defaultFonts.monospace = ["JetBrainsMono Nerd Font"];
   };
   home.file = {
     # ".screenrc".source = dotfiles/screenrc;

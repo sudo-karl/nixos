@@ -1,10 +1,15 @@
-{ config, pkgs, inputs, ... }:
-    
-{ 
-  programs.nixvim = {                          
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  programs.nixvim = {
     enable = true;
     enableMan = true;
     viAlias = true;
+    clipboard.register = "unnamedplus";
+    clipboard.providers.wl-copy.enable = true;
     colorschemes.catppuccin = {
       enable = true;
       settings = {
@@ -17,27 +22,29 @@
       cmp = {
         enable = true;
         autoEnableSources = true;
-        settings = { sources = [ 
-            { name = "nvim_lsp"; }
-            { name = "path";}
-            { name = "buffer"; }
-            { name = "cmdline"; }
-            { name = "luasnip"; }
-            { name = "treesitter"; }
+        settings = {
+          sources = [
+            {name = "nvim_lsp";}
+            {name = "path";}
+            {name = "buffer";}
+            {name = "luasnip";}
+            {name = "treesitter";}
           ];
           mapping = {
             "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<TAB>" = ''
-              cmp.mapping(function(fallback)
-                if cmp.visible() then
-                  cmp.select_next_item();
-                elseif require("luasnip").expand_or_locally_jumpable() then
-                  require("luasnip").expand_or_jump()
-                else 
-                  fallback()
-                end 
-              end, { "i", "s" })
-            '';
+            "<TAB>" =
+              #Lua
+              ''
+                cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_next_item();
+                  elseif require("luasnip").expand_or_locally_jumpable() then
+                    require("luasnip").expand_or_jump()
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" })
+              '';
           };
           snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
         };
@@ -82,7 +89,7 @@
       lint = {
         enable = true;
         lintersByFt = {
-          c = ["clang-format"];
+          c = ["clangtidy"];
           python = ["black"];
           nix = ["statix"];
         };
@@ -120,9 +127,35 @@
           pyright.enable = true;
         };
       };
+      conform-nvim = {
+        enable = true;
+        settings = {
+          formatters_by_ft = {
+            bash = [
+              "shellcheck"
+              "shellharden"
+              "shfmt"
+            ];
+            c = ["clang_format"];
+            cpp = ["clang_format"];
+            python = ["isort" "black"];
+            lua = ["stylua"];
+            nix = ["alejandra"];
+            "_" = [
+              "squeeze_blanks"
+              "trim_whitespace"
+              "trim_newlines"
+            ];
+          };
+          format_on_save = {
+            lsp_format = "fallback";
+            timeout_ms = 500;
+          };
+        };
+      };
       oil.enable = true;
       texpresso.enable = true;
-			tmux-navigator.enable = true;
+      tmux-navigator.enable = true;
       lazygit = {
         enable = true;
       };
@@ -158,10 +191,12 @@
       scrolloff = 8;
       encoding = "utf-8";
       fileencoding = "utf-8";
+      # offset_encoding = "utf-8";
       cmdheight = 1;
       number = true;
       relativenumber = true;
     };
+    performance.byteCompileLua.enable = true;
     keymaps = [
       {
         mode = "n";
@@ -175,6 +210,4 @@
       }
     ];
   };
-   
 }
-
