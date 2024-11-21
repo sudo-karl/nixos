@@ -123,10 +123,6 @@
     glmark2
     hyprpolkitagent
     stress
-    clang-tools
-    nixd
-    gcc
-    alejandra
     wl-clipboard
   ];
   environment.sessionVariables = {
