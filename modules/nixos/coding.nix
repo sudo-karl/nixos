@@ -10,14 +10,14 @@
     gcc
     alejandra
     statix
-    python314
-    python314Packages.black
-    python314Packages.matplotlib
-    python314Packages.numpy
-    python314Packages.manim
+    python3
+    python3Packages.black
+    python3Packages.matplotlib
+    python3Packages.numpy
+    python3Packages.manim
     stylua
-    lua5_4
-    lua54Packages.lua-lsp
+    lua5_1
+    lua51Packages.lua-lsp
     cmake
     gnumake
     cmake-language-server
