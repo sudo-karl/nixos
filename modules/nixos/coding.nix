@@ -1,0 +1,34 @@
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}: {
+  environment.systemPackages = with pkgs; [
+    clang-tools
+    nixd
+    gcc
+    alejandra
+    statix
+    python314
+    python314Packages.black
+    python314Packages.matplotlib
+    python314Packages.numpy
+    python314Packages.manim
+    stylua
+    lua5_4
+    lua54Packages.lua-lsp
+    cmake
+    gnumake
+    cmake-language-server
+    pyright
+    marksman
+    ltex-ls
+    arduino-language-server
+    bash-language-server
+    shellcheck
+    shellharden
+    shfmt
+    isort
+  ];
+}

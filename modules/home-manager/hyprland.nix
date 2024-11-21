@@ -9,6 +9,7 @@
     settings = {
       exec-once = [
         "systemctl --user start hyprpolkitagent.service"
+        "waybar"
       ];
       "$mod" = "SUPER";
       bind = [
