@@ -9,6 +9,7 @@
     settings = {
       exec-once = [
         "systemctl --user start hyprpolkitagent.service"
+        "hyprctl setcursor catppuccin-mocha-mauve-cursors 28"
         "waybar"
       ];
       "$mod" = "SUPER";
@@ -51,6 +52,7 @@
       monitor = "HDMI-A-1, 1920x1080@144, 0x0, 1";
       input = {
         kb_layout = "us,de";
+        kb_options = "grp:alt_shift_toggle";
       };
       general = {
         border_size = 3;

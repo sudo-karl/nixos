@@ -15,6 +15,13 @@
       settings = {
         flavour = "mocha";
         transparent_background = true;
+        term_colors = true;
+        integrations = {
+          cmp = true;
+          which_key = true;
+          treesitter = true;
+          indent_blankline = true;
+        };
       };
     };
     plugins = {
@@ -24,11 +31,30 @@
         autoEnableSources = true;
         settings = {
           sources = [
-            {name = "nvim_lsp";}
-            {name = "path";}
-            {name = "buffer";}
-            {name = "luasnip";}
-            {name = "treesitter";}
+            {
+              name = "nvim_lsp";
+              keyword_length = 3;
+            }
+            {
+              name = "path";
+              keyword_length = 3;
+            }
+            {
+              name = "buffer";
+              keyword_length = 5;
+            }
+            {
+              name = "luasnip";
+              keyword_length = 3;
+            }
+            {
+              name = "codeium";
+              keyword_length = 3;
+            }
+            {
+              name = "treesitter";
+              keyword_length = 3;
+            }
           ];
           mapping = {
             "<CR>" = "cmp.mapping.confirm({ select = true })";
@@ -90,7 +116,7 @@
         enable = true;
         lintersByFt = {
           c = ["clangtidy"];
-          python = ["black"];
+          python = ["pylint"];
           nix = ["statix"];
         };
         autoCmd = {
@@ -153,29 +179,35 @@
           };
         };
       };
-      oil.enable = true;
-      texpresso.enable = true;
-      tmux-navigator.enable = true;
       lazygit = {
         enable = true;
       };
-      lazy.enable = true;
-      web-devicons.enable = true;
-      nvim-autopairs.enable = true;
       markdown-preview = {
         enable = true;
         settings = {
           browser = "firefox";
         };
       };
+      which-key.enable = true;
+      lspkind.enable = true;
+      texpresso.enable = true;
+      tmux-navigator.enable = true;
+      indent-blankline.enable = true;
+      lazy.enable = true;
+      web-devicons.enable = true;
+      nvim-autopairs.enable = true;
+      trouble.enable = true;
+      yazi.enable = true;
+      vim-be-good.enable = true;
     };
     globals.mapleader = " ";
     opts = {
-      tabstop = 2;
+      tabstop = 8;
       softtabstop = 2;
       showtabline = 2;
       expandtab = true;
       smartindent = true;
+      cindent = true;
       shiftwidth = 2;
       breakindent = true;
       splitbelow = true;
@@ -183,7 +215,7 @@
       wrap = true;
       mouse = "a";
       updatetime = 50;
-      swapfile = false;
+      swapfile = true;
       backup = false;
       undofile = true;
       termguicolors = true;
@@ -192,7 +224,7 @@
       encoding = "utf-8";
       fileencoding = "utf-8";
       # offset_encoding = "utf-8";
-      cmdheight = 1;
+      cmdheight = 0;
       number = true;
       relativenumber = true;
     };
@@ -207,6 +239,11 @@
         mode = "n";
         key = "<leader>cp";
         action = "<cmd>MarkdownPreview<cr>";
+      }
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>Yazi<cr>";
       }
     ];
   };

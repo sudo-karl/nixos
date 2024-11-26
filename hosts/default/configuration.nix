@@ -124,11 +124,16 @@
     hyprpolkitagent
     stress
     wl-clipboard
+    orca-slicer
+    spotify
+    hyprcursor
+    libreoffice-qt
   ];
   environment.sessionVariables = {
     EDITOR = "nvim";
     SUDO_EDITOR = "nvim";
     NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
   };
 
   powerManagement.enable = true;

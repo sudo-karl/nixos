@@ -10,11 +10,14 @@
     gcc
     alejandra
     statix
-    python3
-    python3Packages.black
-    python3Packages.matplotlib
-    python3Packages.numpy
-    python3Packages.manim
+    (python3.withPackages (python-pkgs:
+      with python-pkgs; [
+        matplotlib
+        numpy
+        manim
+        black
+        pylint
+      ]))
     stylua
     lua5_1
     lua51Packages.lua-lsp
