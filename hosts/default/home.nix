@@ -17,7 +17,7 @@
   home.packages = with pkgs; [
     # pkgs.hello
     hello
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
+    nerd-fonts.jetbrains-mono
     firefox
     kitty
     neofetch

@@ -4,13 +4,30 @@
   config,
   ...
 }: {
+  services.mako = {
+    enable = true;
+    defaultTimeout = 4000;
+    borderRadius = 20;
+    font = "JetBrainsMono Nerd Font Mono 12";
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      env = [
+        "XCURSOR_THEME, catppuccin-mocha-dark-cursors"
+        "XCURSOR_SIZE, 28"
+        "XDG_SESSION_TYPE, wayland"
+        "XDG_CURRENT_DESKTOP, Hyprland"
+        "XDG_SESSION_DESKTOP, Hyprland"
+      ];
       exec-once = [
         "systemctl --user start hyprpolkitagent.service"
-        "hyprctl setcursor catppuccin-mocha-mauve-cursors 28"
+        # "hyprctl setcursor catppuccin-mocha-mauve-cursors 28"
         "waybar"
+        "[workspace 1 silent] kitty"
+        "[workspace 2 silent] firefox"
+        "[workspace 3 silent] spotify"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
       "$mod" = "SUPER";
       bind = [
@@ -280,5 +297,5 @@
     style.name = "kvantum";
     platformTheme.name = "kvantum";
   };
-  catppuccin.pointerCursor.enable = true;
+  # catppuccin.pointerCursor.enable = true;
 }

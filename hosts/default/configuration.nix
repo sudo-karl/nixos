@@ -128,6 +128,11 @@
     spotify
     hyprcursor
     libreoffice-qt
+    catppuccin-cursors.mochaDark
+    graphite-cursors
+    baobab
+    vlc
+    audacity
   ];
   environment.sessionVariables = {
     EDITOR = "nvim";

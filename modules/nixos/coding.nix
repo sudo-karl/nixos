@@ -33,5 +33,8 @@
     shellharden
     shfmt
     isort
+    stm32cubemx
+    gcc-arm-embedded
+    jdk
   ];
 }
